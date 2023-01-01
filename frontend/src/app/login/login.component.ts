@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {UserService} from "../service/users/user.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+
 
 @Component({
   selector: 'app-login',
@@ -7,15 +10,26 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email!: string;
-  password!: string;
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {}
 
   onSubmit(value: {email: string, password: string}) {
-    console.log(value);
-    this.http.post("http://localhost:8080/users/login", value).subscribe(res =>
-      console.log(res)
+
+    this.userService.loginUser(value).subscribe(
+      (response) => {
+        if (response.role == 'ADMIN'){
+          this.router.navigateByUrl('/admin')
+          this.toastr.success("Success! Welcome Back!")
+        } else {
+          this.router.navigateByUrl('/user')
+          this.toastr.success("Success! Welcome Back!")
+        }
+      },
+      (error: any) => {
+        this.toastr.error("Oops! You may Have the Wrong credentials!")
+      },
+      () => console.log("Sewwwyyyy")
     )
   }
 

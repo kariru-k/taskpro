@@ -104,6 +104,7 @@
 }
 
 .input-box input:valid ~ span,
+.input-box input:invalid ~ span,
 .input-box input:focus ~ span
 {
   color: aqua;
@@ -125,12 +126,14 @@
 }
 
 .input-box input:valid~ i,
+.input-box input:invalid ~ i,
 .input-box input:focus ~ i
 {
   height: 44px;
 }
 
-.input-box input:invalid~ i{
+.input-box input:invalid~ i
+{
   background: red;
 }
 
