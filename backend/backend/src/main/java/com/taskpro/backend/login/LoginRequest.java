@@ -1,4 +1,4 @@
-package com.taskpro.backend.Users.login;
+package com.taskpro.backend.login;
 
 public class LoginRequest {
     private String email;

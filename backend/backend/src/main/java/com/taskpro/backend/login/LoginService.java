@@ -1,4 +1,4 @@
-package com.taskpro.backend.Users.login;
+package com.taskpro.backend.login;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

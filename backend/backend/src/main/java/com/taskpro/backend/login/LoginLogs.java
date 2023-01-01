@@ -1,4 +1,4 @@
-package com.taskpro.backend.Users.login;
+package com.taskpro.backend.login;
 
 import com.taskpro.backend.Users.User;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.taskpro.backend.Users.login;
+package com.taskpro.backend.login;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

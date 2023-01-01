@@ -1,11 +1,21 @@
-<form>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter username">
+<div class="login">
+  <div class="box">
+    <div class="form">
+      <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+      <h1>TASKPRO SYSTEM</h1>
+      <h2>Log In</h2>
+      <div class="input-box">
+        <input type="email" name="email" required autocomplete=off ngModel>
+        <span>Email</span>
+        <i></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" required ngModel>
+        <span>Passsword</span>
+        <i></i>
+      </div>
+      <button type="submit">Log In</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password">
-    </div>
-    <button type="submit" class="btn btn-primary">Log In</button>
-  </form>
+  </div>
+</div>
