@@ -3,7 +3,6 @@ package com.taskpro.backend.Users;
 import com.taskpro.backend.login.LoginLogs;
 import com.taskpro.backend.login.LoginRequest;
 import com.taskpro.backend.login.LoginService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping("api/v1")
 public class UserController {
     private final UserService userService;
 
@@ -40,7 +40,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/createUser")
+    @PostMapping("/users/createUser")
     public User add(@RequestBody User user) {
         userService.save(user);
         return user;
