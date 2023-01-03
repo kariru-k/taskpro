@@ -25,11 +25,17 @@ public class UserController {
 
     //return all users
     @GetMapping("/users")
-    public List<User> list() {
-        return userService.listAll();
+    public ResponseEntity<List<User>> list() {
+        List<User> users = userService.listAll();
+        if(users.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.ok().body(users);
+        }
     }
 
 
+    //Get user by email
     @GetMapping("/users/{email}")
     public ResponseEntity<User> get(@PathVariable String email) {
         try {
@@ -41,11 +47,12 @@ public class UserController {
     }
 
     @PostMapping("/users/createUser")
-    public User add(@RequestBody User user) {
+    public ResponseEntity<User>add(@RequestBody User user) {
         userService.save(user);
-        return user;
+        return ResponseEntity.ok().body(user);
     }
 
+    //Log In User
     @PostMapping("/users/login")
     public ResponseEntity<User> login(@RequestBody LoginRequest request){
         boolean authenticated = userService.authenticate(request.getEmail(), request.getPassword());

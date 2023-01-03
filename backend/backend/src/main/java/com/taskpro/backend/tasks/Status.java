@@ -1,7 +1,7 @@
 package com.taskpro.backend.tasks;
 
 public enum Status {
-    TODO {},
+    TODO,
     DEVELOPMENT,
     PEERREVIEW,
     QA,

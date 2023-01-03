@@ -19,8 +19,13 @@ public class TaskController {
 
     //Get Tasks
     @GetMapping("/tasks")
-    public List<Task> getTasks() {
-        return taskService.getTasks();
+    public ResponseEntity<List<Task>> getTasks() {
+        List<Task> tasks = taskService.getTasks();
+        if (tasks.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok().body(tasks);
+        }
     }
 
 
@@ -31,7 +36,7 @@ public class TaskController {
         if(task != null){
             return ResponseEntity.ok().body(task);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
     }
 
@@ -46,21 +51,26 @@ public class TaskController {
         }
     }
 
+    //Get percentage of tasks by status
     @GetMapping("/tasks/users/percentages/{id}")
-    public List<CountType> getPercentageUserTasksByType(@PathVariable User id){
+    public ResponseEntity<List<CountType>> getPercentageUserTasksByType(@PathVariable User id){
         List<CountType> countTypeList = taskService.getPercentageUserTasksByType(id);
         Long total = taskService.findNumberOfTasksByUser(id);
+        if(countTypeList.isEmpty() && total == null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
         for(CountType i: countTypeList){
             i.setCount(i.getCount()/total * 100);
         }
-        return countTypeList;
+        return ResponseEntity.ok().body(countTypeList);
     }
 
 
     //Create a Task
     @PostMapping("/tasks")
-    public Task addTask(@RequestBody Task task) {
-        return taskService.saveTask(task);
+    public ResponseEntity<Task> addTask(@RequestBody Task task) {
+        taskService.saveTask(task);
+        return ResponseEntity.status(HttpStatus.OK).body(task);
     }
 
 
