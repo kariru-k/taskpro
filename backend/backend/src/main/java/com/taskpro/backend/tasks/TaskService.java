@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @Transactional
@@ -32,6 +33,10 @@ public class TaskService {
     }
 
     public Task getTaskById(Long id) {
-        return taskRepository.findById(id).get();
+        return taskRepository.findTasksById(id);
+    }
+
+    public void delete(Long id) {
+        taskRepository.deleteById(id);
     }
 }

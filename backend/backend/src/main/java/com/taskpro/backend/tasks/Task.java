@@ -19,7 +19,7 @@ public class Task {
     private Date dueDate;
     private String description;
     private Date createdon;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User createdBy;
