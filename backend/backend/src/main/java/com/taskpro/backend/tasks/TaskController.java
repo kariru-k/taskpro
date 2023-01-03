@@ -45,6 +45,18 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/tasks/users/percentages/{id}")
+    public List<CountType> getPercentageUserTasksByType(@PathVariable User id){
+        List<CountType> countTypeList = taskService.getPercentageUserTasksByType(id);
+        Long total = taskService.findNumberOfTasksByUser(id);
+        for(CountType i: countTypeList){
+            i.setCount(i.getCount()/total * 100);
+        }
+        return countTypeList;
+    }
+
+
     //Create a Task
     @PostMapping("/tasks")
     public Task addTask(@RequestBody Task task) {

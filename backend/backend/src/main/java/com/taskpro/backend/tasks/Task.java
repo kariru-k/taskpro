@@ -1,5 +1,6 @@
 package com.taskpro.backend.tasks;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.taskpro.backend.Users.User;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -22,6 +23,7 @@ public class Task {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private User createdBy;
 
 

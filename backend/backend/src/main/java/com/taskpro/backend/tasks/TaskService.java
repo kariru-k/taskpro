@@ -5,7 +5,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @Transactional
@@ -17,7 +16,7 @@ public class TaskService {
     }
 
     public List<Task> getTasks(){
-        return taskRepository.findAll();
+        return taskRepository.getAllByDueDateDescending();
     }
 
     public List<Task> getTasksByUser(User id){
@@ -39,4 +38,13 @@ public class TaskService {
     public void delete(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public List<CountType> getPercentageUserTasksByType(User id){
+        return taskRepository.getPercentageUserTasksByType(id);
+    }
+
+    public Long findNumberOfTasksByUser(User id){
+        return taskRepository.findNumberOfTasksByUser(id);
+    }
+
 }
