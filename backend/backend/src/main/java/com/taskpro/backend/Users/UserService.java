@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService {
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,17 +22,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void save(User user){
+    public User save(User user){
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public User get(String email){
         return userRepository.findByEmail(email);
     }
 
-    public void delete(Integer id){
+    public void delete(Long id){
         userRepository.deleteById(id);
     }
 

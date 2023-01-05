@@ -16,7 +16,7 @@ public class TaskService {
     }
 
     public List<Task> getTasks(){
-        return taskRepository.getAllByDueDateDescending();
+        return taskRepository.findAll();
     }
 
     public List<Task> getTasksByUser(User id){
