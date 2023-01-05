@@ -41,7 +41,12 @@ public class UserServiceTest{
         service.delete(user.getId());
         verify(repository,times(1)).deleteById(user.getId());
     }
-
+    @Test
+    public void getUserByEmail(){
+        User user = new User("Santa","Clause","claus@gmail.com","axgznajkaaka",Role.USER);
+        when(repository.findByEmail(user.getEmail())).thenReturn(user);
+        assertEquals(user,service.get(user.getEmail()));
+    }
 }
 
 
