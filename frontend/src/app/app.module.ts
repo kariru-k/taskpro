@@ -7,14 +7,25 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {ToastrModule} from "ngx-toastr";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgChartsModule } from 'ng2-charts';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatButtonModule} from "@angular/material/button";
+import { ListComponent } from './task/list/list.component';
+import { HeaderComponent } from './header/header.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     LoginComponent,
-    routingComponents
+    routingComponents,
+    ListComponent,
+    HeaderComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -24,7 +35,15 @@ import {ToastrModule} from "ngx-toastr";
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right",
       preventDuplicates: true
-    })
+    }),
+    BrowserAnimationsModule,
+    NgChartsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatListModule
   ],
   providers: [
     CookieService

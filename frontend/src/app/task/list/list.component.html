@@ -1,0 +1,20 @@
+<h3>Tasks</h3>
+<mat-selection-list [multiple]="false">
+  <mat-list-option
+    *ngFor="let task of tasks"
+  >
+    <div class="d-flex justify-content-between">
+      <span class="task-date">
+<!--        {{ task.dueDate | date: "mediumDate" }}-->
+      </span>
+      <span class="task-date">
+<!--        {{ task.type }}-->
+      </span>
+      <span class="task-title">
+<!--        {{ task.title.substring(0, 40) }}-->
+<!--        {{ task.title.length > 40 ? "..." : "" }}-->
+      </span>
+    </div>
+  </mat-list-option>
+
+</mat-selection-list>

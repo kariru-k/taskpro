@@ -18,6 +18,7 @@ public class UserController {
 
     private final LoginService loginService;
 
+
     public UserController(UserService userService, LoginService loginService) {
         this.userService = userService;
         this.loginService = loginService;
@@ -46,6 +47,7 @@ public class UserController {
         }
     }
 
+    //create User
     @PostMapping("/users/createUser")
     public ResponseEntity<User>add(@RequestBody User user) {
         userService.save(user);

@@ -56,7 +56,7 @@ public class TaskController {
     public ResponseEntity<List<CountType>> getPercentageUserTasksByType(@PathVariable User id){
         List<CountType> countTypeList = taskService.getPercentageUserTasksByType(id);
         Long total = taskService.findNumberOfTasksByUser(id);
-        if(countTypeList.isEmpty() && total == null){
+        if(countTypeList.isEmpty() && total == 0){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         for(CountType i: countTypeList){
@@ -102,3 +102,4 @@ public class TaskController {
         }
     }
 }
+

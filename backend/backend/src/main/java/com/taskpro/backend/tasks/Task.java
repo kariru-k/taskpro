@@ -23,17 +23,16 @@ public class Task {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private User createdBy;
 
 
-    public Task(String title, Status status, Date dueDate, String description, User created_by) {
+    public Task(String title, Status status, Date dueDate, String description, User createdBy) {
         this.title = title;
         this.status = status;
         this.dueDate = dueDate;
         this.description = description;
         this.createdon = new Date();
-        this.createdBy = created_by;
+        this.createdBy = createdBy;
     }
 
     public Task() {

@@ -1,0 +1,11 @@
+h3{
+  text-align: center;
+}
+
+mat-selection-list {
+  height: 100%;
+}
+
+.mat-list-item {
+  height: 70px !important;
+}
