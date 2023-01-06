@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 public class UserServiceTest{
     @Autowired
-    private UserService service;
+    private UserServiceImpl service;
     @MockBean
     private UserRepository repository;
     @Test

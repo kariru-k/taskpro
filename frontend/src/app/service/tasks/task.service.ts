@@ -18,6 +18,8 @@ export class TaskService {
     return this.httpClient
       .get<Array<Task>>(`${this.apiUrl}/tasks/users/${user.id}`)
       .pipe(map((data: Array<Task>) => data))
+
+    localStorage.setItem()
   }
 
 

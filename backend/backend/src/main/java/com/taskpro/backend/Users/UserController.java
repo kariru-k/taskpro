@@ -3,6 +3,7 @@ package com.taskpro.backend.Users;
 import com.taskpro.backend.login.LoginLogs;
 import com.taskpro.backend.login.LoginRequest;
 import com.taskpro.backend.login.LoginService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +15,12 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("api/v1")
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     private final LoginService loginService;
 
 
-    public UserController(UserService userService, LoginService loginService) {
+    public UserController(UserServiceImpl userService, LoginService loginService) {
         this.userService = userService;
         this.loginService = loginService;
     }
@@ -61,7 +62,10 @@ public class UserController {
         if (authenticated){
             User user = userService.get(request.getEmail());
             loginService.saveLogs(new LoginLogs(user, new Date()));
-            return ResponseEntity.status(HttpStatus.OK).body(user);
+            HttpHeaders headers = new HttpHeaders();
+            String jwt = userService.jwtToken(user);
+            headers.add("Authorization", "Bearer " + jwt);
+            return ResponseEntity.ok().headers(headers).body(user);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
