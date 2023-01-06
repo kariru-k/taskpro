@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+    <app-header></app-header>
+  </div>
+  <div class="main-container">
+    <div class="one">
+        <canvas
+          baseChart
+          [data]="doughnutChartData"
+          [type]="doughnutChartType"
+          [options]="doughnutChartOptions"
+        >
+        </canvas>
+    </div>
+    <div class="two">
+      <div *ngFor="let n of typeData" class="total-task-analytics">
+        <div class="display"></div>
+        <div>
+          <p class="data">{{typeData}} %</p>
+          <p class="data-type">{{typeData}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="three">
+      <app-list></app-list>
+    </div>
+  </div>
+</div>
