@@ -4,25 +4,11 @@
   </div>
   <div class="main-container">
     <div class="one">
-        <canvas
-          baseChart
-          [data]="doughnutChartData"
-          [type]="doughnutChartType"
-          [options]="doughnutChartOptions"
-        >
-        </canvas>
+      <h2>Statistics</h2>
+        <app-chart></app-chart>
     </div>
-    <div class="two">
-      <div *ngFor="let n of typeData" class="total-task-analytics">
-        <div class="display"></div>
-        <div>
-          <p class="data">{{typeData}} %</p>
-          <p class="data-type">{{typeData}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="three">
-      <app-list></app-list>
-    </div>
+    <app-list></app-list>
   </div>
 </div>
+
+

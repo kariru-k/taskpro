@@ -1,11 +1,9 @@
-h3{
-  text-align: center;
+.container{
+  display: flex;
+  flex-wrap: wrap;
 }
 
-mat-selection-list {
-  height: 100%;
-}
-
-.mat-list-item {
-  height: 70px !important;
+mat-card{
+  background: salmon;
+  margin: 10px;
 }

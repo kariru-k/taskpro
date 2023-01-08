@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {User} from "../interface/user";
-import {UserService} from "../service/users/user.service";
+import {LocalstorageService} from "../service/localStorage/localstorage.service";
 
 @Component({
   selector: 'app-admin',
@@ -9,9 +9,9 @@ import {UserService} from "../service/users/user.service";
 })
 export class AdminComponent {
 
-  user!: User
+  user!: User | null
 
-  constructor(private userService: UserService) {
-    this.user = userService.getUser();
+  constructor(private localStorageService: LocalstorageService) {
+    this.user = this.localStorageService.getItem('user');
   }
 }

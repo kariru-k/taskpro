@@ -3,6 +3,7 @@ package com.taskpro.backend.Users;
 import com.taskpro.backend.login.LoginLogs;
 import com.taskpro.backend.login.LoginRequest;
 import com.taskpro.backend.login.LoginService;
+import jakarta.servlet.http.Cookie;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,7 +65,12 @@ public class UserController {
             loginService.saveLogs(new LoginLogs(user, new Date()));
             HttpHeaders headers = new HttpHeaders();
             String jwt = userService.jwtToken(user);
+            Cookie cookie = new Cookie("jwt", jwt);
+            cookie.setHttpOnly(true);
+            cookie.setMaxAge(3600);
             headers.add("Authorization", "Bearer " + jwt);
+            headers.add("Set-Cookie", cookie.toString());
+            headers.set("Access-Control-Expose-Headers", "Authorization");
             return ResponseEntity.ok().headers(headers).body(user);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

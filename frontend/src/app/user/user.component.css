@@ -8,7 +8,6 @@
 
 .one, .two, .three {
   float: left;
-  height: inherit;
   border: 1px solid salmon;
   border-radius: 10px;
   margin: 5px;
@@ -16,6 +15,7 @@
 
 .one{
   width: 40%;
+  height: inherit;
 }
 .two{
   width: 20%;
@@ -23,7 +23,5 @@
 }
 .three {
   width: 40%;
-  background-color: darkcyan;
-
 }
 

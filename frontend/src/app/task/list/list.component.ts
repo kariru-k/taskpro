@@ -3,6 +3,8 @@ import {User} from "../../interface/user";
 import {UserService} from "../../service/users/user.service";
 import {TaskService} from "../../service/tasks/task.service";
 import {Task} from "../../interface/task";
+import {LocalstorageService} from "../../service/localStorage/localstorage.service";
+import {Observable, Subject, switchMap, takeUntil, tap, timer} from "rxjs";
 
 @Component({
   selector: 'app-list',
@@ -10,24 +12,26 @@ import {Task} from "../../interface/task";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit{
-  tasks:Task[] = [];
-  user!: User
+  tasks!: Observable<Task[]>;
+  private unsub = new Subject();
+  user!: User | null
 
-  constructor(private userService: UserService, private taskService: TaskService) {
-    this.user = this.userService.getUser()
+  constructor(private userService: UserService, private taskService: TaskService, private localStorageService: LocalstorageService) {
+    this.user = this.localStorageService.getItem("user");
   }
 
   ngOnInit() {
-    this.getTasks()
+    timer(0, 15000).pipe(
+      tap((x) => console.log(x)),
+      takeUntil(this.unsub),
+      switchMap(() => this.getTasks())
+    ).subscribe();
+
   }
 
   getTasks() {
-    this.taskService.getTasksByUser(this.user).subscribe(response => {
-      for (let value of response) {
-        this.tasks.push(value);
-      }
-      console.log(this.tasks);
-    })
+    this.tasks = this.taskService.getTasksByUser(this.user);
+    return this.tasks
   }
 
 }

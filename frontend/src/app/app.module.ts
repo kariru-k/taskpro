@@ -17,6 +17,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { ListComponent } from './task/list/list.component';
 import { HeaderComponent } from './header/header.component';
 import {MatListModule} from "@angular/material/list";
+import { ChartComponent } from './chart/chart.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -26,6 +28,7 @@ import {MatListModule} from "@angular/material/list";
     routingComponents,
     ListComponent,
     HeaderComponent,
+    ChartComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -43,7 +46,8 @@ import {MatListModule} from "@angular/material/list";
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [
     CookieService

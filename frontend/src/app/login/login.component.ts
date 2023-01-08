@@ -3,6 +3,7 @@ import {UserService} from "../service/users/user.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {User} from "../interface/user";
+import {LocalstorageService} from "../service/localStorage/localstorage.service";
 
 
 @Component({
@@ -12,16 +13,19 @@ import {User} from "../interface/user";
 })
 export class LoginComponent {
 
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {}
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService, private localStorageService: LocalstorageService) {}
 
   onSubmit(value: {email: string, password: string}) {
 
     this.userService.loginUser(value).subscribe(
       (response) => {
+        console.log(response.headers.get("Authorization"));
 
-        this.userService.setUser(response);
+        this.localStorageService.setItem('user', response.body);
 
-        if (response.role == 'ADMIN'){
+        this.userService.setUser(response.body);
+
+        if (response.body?.role == 'ADMIN'){
           this.router.navigateByUrl('/admin')
           this.toastr.success("Success! Welcome Back!")
         } else {
