@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {ToastrModule} from "ngx-toastr";
@@ -19,6 +19,12 @@ import { HeaderComponent } from './header/header.component';
 import {MatListModule} from "@angular/material/list";
 import { ChartComponent } from './chart/chart.component';
 import {MatCardModule} from "@angular/material/card";
+import { ShowComponent } from './task/show/show.component';
+import { AddComponent } from './task/add/add.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -29,6 +35,8 @@ import {MatCardModule} from "@angular/material/card";
     ListComponent,
     HeaderComponent,
     ChartComponent,
+    ShowComponent,
+    AddComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -47,7 +55,12 @@ import {MatCardModule} from "@angular/material/card";
     MatDividerModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
     CookieService

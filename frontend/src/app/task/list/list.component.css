@@ -4,6 +4,24 @@
 }
 
 mat-card{
-  background: salmon;
+  background: cornflowerblue;
   margin: 10px;
+}
+
+mat-card-subtitle{
+  color: whitesmoke;
+}
+
+.task-due-date {
+  color: red;
+  font-weight: 800;
+}
+
+.button-delete{
+  background-color: red;
+}
+
+.button{
+  display: flex;
+  align-items: center;
 }

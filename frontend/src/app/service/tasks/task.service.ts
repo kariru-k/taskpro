@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {User} from "../../interface/user";
 import {concatMap, map, Observable, startWith, Subject} from "rxjs";
@@ -29,6 +29,10 @@ export class TaskService {
 
   getPercentageTasksByUser(user: User | null): Observable<Array<CountResponse>>{
     return this.httpClient.get<Array<CountResponse>>(`${this.apiUrl}/tasks/users/percentages/${user?.id}`)
+  }
+
+  addTask(value: Task): Observable<HttpResponse<Task>>{
+    return this.httpClient.post<Task>(`${this.apiUrl}/tasks`, value, {observe: "response"});
   }
 
 

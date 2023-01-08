@@ -1,0 +1,25 @@
+<div class="add-task">
+  <div class="header">
+    <h1>Add Task</h1>
+  </div>
+  <div class="content">
+    <form [formGroup]="taskForm"  (submit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="title" formControlName="title">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Create Task</button>
+    </form>
+  </div>
+</div>
