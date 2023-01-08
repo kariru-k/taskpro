@@ -25,6 +25,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { TrackEmployeetaskStatusComponent } from './track-employeetask-status/track-employeetask-status.component';
+import { OverdueTasksComponent } from './overdue-tasks/overdue-tasks.component';
+import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -37,6 +41,10 @@ import {MatNativeDateModule} from "@angular/material/core";
     ChartComponent,
     ShowComponent,
     AddComponent,
+    CreateEmployeeComponent,
+    TrackEmployeetaskStatusComponent,
+    OverdueTasksComponent,
+    EmployeeTaskdetailsComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -4,6 +4,11 @@ import {AdminComponent} from "./admin/admin.component";
 import {UserComponent} from "./user/user.component";
 import {LoginComponent} from "./login/login.component";
 import {AddComponent} from "./task/add/add.component";
+import { CreateEmployeeComponent} from './create-employee/create-employee.component';
+import { TrackEmployeetaskStatusComponent} from './track-employeetask-status/track-employeetask-status.component';
+import { OverdueTasksComponent} from './overdue-tasks/overdue-tasks.component';
+import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
+import { EMPTY } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -21,6 +26,22 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddComponent
+  },
+  {
+    path: 'createemployee',
+    component: CreateEmployeeComponent
+  },
+  {
+    path: 'trackemployeestatus',
+    component: TrackEmployeetaskStatusComponent
+  },
+  {
+    path: 'overduetasks',
+    component: OverdueTasksComponent
+  },
+  {
+    path: 'employeetaskdetails',
+    component: EmployeeTaskdetailsComponent
   }
 ]
 @NgModule({
