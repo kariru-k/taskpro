@@ -13,6 +13,9 @@ public interface TaskRepository extends JpaRepository <Task, Long>{
     @Query(value = "SELECT COUNT(*) from Task t where t.createdBy = :id")
     Long findNumberOfTasksByUser(User id);
 
+    @Query(value = "SELECT COUNT(*) from Task t")
+    Long findAllTasks();
+
     List<Task> findTasksByCreatedBy(User id);
 
     @Query(

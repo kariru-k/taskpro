@@ -16,6 +16,8 @@
 .one{
   width: 40%;
   height: inherit;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #edf5e1;
 }
 .two{
   width: 20%;
@@ -23,5 +25,7 @@
 }
 .three {
   width: 40%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fcdb95;
 }
 

@@ -39,6 +39,10 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
+    public Long getAll(){
+        return taskRepository.findAllTasks();
+    }
+
     public List<CountType> getPercentageUserTasksByType(User id){
         return taskRepository.getPercentageUserTasksByType(id);
     }

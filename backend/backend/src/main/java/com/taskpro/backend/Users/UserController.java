@@ -26,6 +26,13 @@ public class UserController {
         this.loginService = loginService;
     }
 
+    //Get number of Users
+    @GetMapping("/users/number")
+    public ResponseEntity<Long> getAll() {
+        Long number = userService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(number);
+    }
+
     //return all users
     @GetMapping("/users")
     public ResponseEntity<List<User>> list() {
