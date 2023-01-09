@@ -5,6 +5,7 @@ import {User} from "../../interface/user";
 import {concatMap, map, Observable, startWith, Subject} from "rxjs";
 import {Task} from "../../interface/task";
 import {CountResponse} from "../../interface/CountResponse";
+import {Status} from "../../interface/Status";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,11 @@ export class TaskService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private _refreshNeeded = new Subject<void>();
-
-  get refreshNeeded() {
-    return this._refreshNeeded;
+  getTaskById(id: number): Observable<Task> {
+    return this.httpClient
+      .get<Task>(`http://localhost:8080/api/v1/tasks/${id}`)
+      .pipe(map((d: Task) => d));
   }
-
-
 
   getTasksByUser(user: User | null): Observable<Array<Task>>{
     return this.httpClient
@@ -33,6 +32,26 @@ export class TaskService {
 
   addTask(value: Task): Observable<HttpResponse<Task>>{
     return this.httpClient.post<Task>(`${this.apiUrl}/tasks`, value, {observe: "response"});
+  }
+
+  getTypeOptions(): Array<Status> {
+    return [
+      { type: 'TODO' },
+      { type: 'DEVELOPMENT' },
+      { type: 'PEERREVIEW' },
+      { type: 'QA' },
+      { type: 'DEPLOYMENT' },
+      { type: 'RELEASE' },
+    ];
+  }
+
+  updateTask(task: Task, id: number): Observable<Task> {
+    return this.httpClient.put<Task>(`http://localhost:8080/api/v1/tasks/${id}`, task)
+      .pipe(map((d: Task) => d));
+  }
+
+  deleteTask(id: number): Observable<any> {
+    return this.httpClient.delete(`http://localhost:8080/api/v1/tasks/${id}`)
   }
 
 

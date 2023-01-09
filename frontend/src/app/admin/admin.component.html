@@ -1,4 +1,3 @@
-<!-- <p>{{user!.role}}</p> -->
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus'></i>
@@ -12,7 +11,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a routerLink="/createemployee">
             <i class='bx bx-box' ></i>
             <span class="links_name">Create Employee</span>
           </a>
@@ -29,7 +28,7 @@
             <span class="links_name">Overdue Tasks</span>
           </a>
         </li>
-       
+
         <li>
           <a href="#">
             <i class='bx bx-user' ></i>
@@ -47,17 +46,11 @@
   <section class="home-section">
     <nav>
       <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Dashboard</span>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search' ></i>
       </div>
       <div class="profile-details">
         <!--<img src="images/profile.jpg" alt="">-->
-        <span class="admin_name">Keith Mutuku</span>
-        <i class='bx bx-chevron-down' ></i>
+        <span class="admin_name">{{user!.firstName}} {{user!.lastName}}</span>
       </div>
     </nav>
 
@@ -66,23 +59,20 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Employees</div>
-            <div class="number">40,876</div>
+            <div class="number">{{employees}}</div>
           </div>
-          <i class='bx bx-cart-alt cart'></i>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Tasks</div>
             <div class="number">38,876</div>
           </div>
-          <i class='bx bxs-cart-add cart two' ></i>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Overdue Tasks</div>
             <div class="number">$12,876</div>
           </div>
-          <i class='bx bx-cart cart three' ></i>
         </div>
       </div>
 
@@ -112,7 +102,7 @@
             <li><a href="#">Rexel Mags</a></li>
              <li><a href="#">Tiana Loths</a></li>
           </ul>
-          
+
           </div>
           <div class="button">
             <a href="#">See All</a>

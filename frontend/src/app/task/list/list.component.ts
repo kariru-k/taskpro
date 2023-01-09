@@ -6,6 +6,10 @@ import {Task} from "../../interface/task";
 import {LocalstorageService} from "../../service/localStorage/localstorage.service";
 import {Observable, Subject, switchMap, takeUntil, tap, timer} from "rxjs";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {UpdateComponent} from "../update/update.component";
+import {Status} from "../../interface/Status";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-list',
@@ -17,12 +21,21 @@ export class ListComponent implements OnInit{
   private unsub = new Subject();
   user!: User | null
 
-  constructor(private userService: UserService, private taskService: TaskService, private localStorageService: LocalstorageService, private router: Router) {
+
+
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private localStorageService: LocalstorageService,
+    private router: Router,
+    private dialog: MatDialog,
+    private toastr: ToastrService
+  ) {
     this.user = this.localStorageService.getItem("user");
   }
 
   ngOnInit() {
-    timer(0, 15000).pipe(
+    timer(0, 10000).pipe(
       tap((x) => console.log(x)),
       takeUntil(this.unsub),
       switchMap(() => this.getTasks())
@@ -37,6 +50,27 @@ export class ListComponent implements OnInit{
 
   onClick() {
     this.router.navigateByUrl('/add')
+  }
+
+  onUpdateDialog(task: Task) {
+    console.log(task);
+    const dialogRef = this.dialog.open(UpdateComponent, {
+      width: '1000px',
+      data: task,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed')
+    })
+  }
+
+  onDeleteTask(task: Task) {
+    this.taskService.deleteTask(<number>task.id).subscribe(
+      response => {
+        console.log(response);
+        this.toastr.success("Task Deleted Successfully");
+      }
+    )
   }
 
 }

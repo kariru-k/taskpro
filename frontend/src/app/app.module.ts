@@ -19,7 +19,6 @@ import { HeaderComponent } from './header/header.component';
 import {MatListModule} from "@angular/material/list";
 import { ChartComponent } from './chart/chart.component';
 import {MatCardModule} from "@angular/material/card";
-import { ShowComponent } from './task/show/show.component';
 import { AddComponent } from './task/add/add.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
@@ -29,6 +28,8 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 import { TrackEmployeetaskStatusComponent } from './track-employeetask-status/track-employeetask-status.component';
 import { OverdueTasksComponent } from './overdue-tasks/overdue-tasks.component';
 import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
+import { UpdateComponent } from './task/update/update.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -39,12 +40,12 @@ import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-ta
     ListComponent,
     HeaderComponent,
     ChartComponent,
-    ShowComponent,
     AddComponent,
     CreateEmployeeComponent,
     TrackEmployeetaskStatusComponent,
     OverdueTasksComponent,
     EmployeeTaskdetailsComponent,
+    UpdateComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -68,7 +69,8 @@ import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-ta
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     CookieService

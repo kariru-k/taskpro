@@ -55,13 +55,17 @@ public class TaskController {
     @GetMapping("/tasks/users/percentages/{id}")
     public ResponseEntity<List<CountType>> getPercentageUserTasksByType(@PathVariable User id){
         List<CountType> countTypeList = taskService.getPercentageUserTasksByType(id);
+        System.out.println(countTypeList);
         Long total = taskService.findNumberOfTasksByUser(id);
         if(countTypeList.isEmpty() && total == 0){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         for(CountType i: countTypeList){
-            i.setCount(i.getCount()/total * 100);
+            double Percentage = i.getCount() * 100L;
+            System.out.println();
+            i.setCount(Math.round(Percentage / total));
         }
+        System.out.println(countTypeList);
         return ResponseEntity.ok().body(countTypeList);
     }
 
@@ -75,6 +79,7 @@ public class TaskController {
 
 
 
+    //update Task
     @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@RequestBody Task taskrequest,@PathVariable Long id) {
         if(taskService.existById(id)){

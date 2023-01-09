@@ -12,8 +12,8 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>EDIT</button>
-      <button mat-button class="button-delete">DELETE</button>
+      <button mat-button (click)="onUpdateDialog(task)">EDIT</button>
+      <button mat-button class="button-delete" (click)="onDeleteTask(task)">DELETE</button>
     </mat-card-actions>
   </mat-card>
   <div class="button">

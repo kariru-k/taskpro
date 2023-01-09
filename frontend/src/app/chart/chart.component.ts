@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChartData, ChartOptions, ChartType} from "chart.js";
+import {Chart, ChartData, ChartOptions, ChartType} from "chart.js";
 import {UserService} from "../service/users/user.service";
 import {TaskService} from "../service/tasks/task.service";
 import {LocalstorageService} from "../service/localStorage/localstorage.service";
@@ -19,8 +19,13 @@ export class ChartComponent implements OnInit{
   data: number[] = [];
   private unsub = new Subject();
 
+  public chart: any;
+
 
   response!: Observable<CountResponse[]>
+
+
+
 
   constructor(private userService: UserService, private taskService: TaskService, private localStorageService: LocalstorageService) {
     this.user = this.localStorageService.getItem("user");
@@ -39,6 +44,9 @@ export class ChartComponent implements OnInit{
 
     this.updateChartDetails();
 
+    this.createChart();
+    this.updateChart();
+
   }
   getPercentageTasks(){
     this.response = this.taskService.getPercentageTasksByUser(this.user);
@@ -46,29 +54,34 @@ export class ChartComponent implements OnInit{
   }
 
   updateChartDetails(){
-    this.response.subscribe(
+    this.getPercentageTasks().subscribe(
       response => {
         response.forEach((value: CountResponse) => {
           this.labels.push(value.status);
           this.data.push(value.count)
+          this.chart.update();
         })
       }
     )
   }
 
-  public doughnutChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public doughnutChartData: ChartData = {
-    labels: this.labels,
-    datasets: [
-      {
-        data: this.data
+  createChart() {
+    this.chart = new Chart("myChart", {
+      type: 'doughnut',
+      data: {
+        labels: this.labels,
+        datasets: [
+          {
+            data: this.data
+          }
+        ]
       }
-    ]
-  };
-  public doughnutChartType: ChartType = 'doughnut';
+    })
+  }
 
+  updateChart(){
+    this.chart.update();
+  }
 
 
 }
