@@ -30,6 +30,7 @@ import { OverdueTasksComponent } from './overdue-tasks/overdue-tasks.component';
 import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
 import { UpdateComponent } from './task/update/update.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -46,6 +47,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     OverdueTasksComponent,
     EmployeeTaskdetailsComponent,
     UpdateComponent,
+    RegistrationComponent,
   ],
   imports: [
     AppRoutingModule,

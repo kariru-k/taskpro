@@ -9,6 +9,7 @@ import { TrackEmployeetaskStatusComponent} from './track-employeetask-status/tra
 import { OverdueTasksComponent} from './overdue-tasks/overdue-tasks.component';
 import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
 import { EMPTY } from 'rxjs';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'employeetaskdetails',
     component: EmployeeTaskdetailsComponent
+  },
+  {
+    path: 'signup',
+    component: RegistrationComponent
   }
 ]
 @NgModule({

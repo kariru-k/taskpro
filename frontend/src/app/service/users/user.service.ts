@@ -13,13 +13,10 @@ export class UserService {
   user!: User | null;
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
-
-
-
-  setUser(user: User | null){
-    sessionStorage.setItem('user', user!.id.toString())
-    this.user = user
-  }
+  // setUser(user: User | null){
+  //   sessionStorage.setItem('user', user.id.toString())
+  //   this.user = user
+  // }
 
   loginUser(value: {email: string, password: string}): Observable<HttpResponse<User>>{
     return this.http.post<User>(`${this.apiUrl}/users/login`, value, {observe: "response"});
