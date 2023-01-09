@@ -29,4 +29,8 @@ export class UserService {
     return this.http.get<number>(`${this.apiUrl}/users/number`)
   }
 
+  signUpUser(user: User): Observable<HttpResponse<User>>{
+    return this.http.post<User>(`${this.apiUrl}/users/createUser`, user, {observe: "response"});
+  }
+
 }
