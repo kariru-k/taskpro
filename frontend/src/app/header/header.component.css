@@ -1,13 +1,52 @@
-.header {
-  height: 70px;
-  padding: 20px 50px;
-  background-color: rgb(1, 38, 69);
-  color: whitesmoke;
+nav{
   display: flex;
   justify-content: space-between;
+  height: 80px;
+  background: #0A2558;
+  align-items: center;
+  width: 100%;
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
 }
 
-.company {
-  font-weight: bold;
-  font-size: 20px;
+nav .sidebar-button .dashboard {
+  color: white;
+}
+
+
+.sidebar.active ~ .home-section nav{
+  left: 60px;
+  width: calc(100% - 60px);
+}
+nav .sidebar-button{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+nav .sidebar-button i{
+  font-size: 35px;
+  margin-right: 10px;
+}
+
+nav .profile-details{
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  height: 50px;
+  min-width: 190px;
+  padding: 0 15px 0 2px;
+}
+
+nav .profile-details .admin_name{
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 10px;
+  color: sandybrown;
+}
+nav .profile-details i{
+  font-size: 25px;
 }

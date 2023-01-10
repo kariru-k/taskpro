@@ -23,8 +23,6 @@ export class LoginComponent {
 
         this.localStorageService.setItem('user', response.body);
 
-        this.userService.setUser(response.body);
-
         if (response.body?.role == 'ADMIN'){
           this.router.navigateByUrl('/admin')
           this.toastr.success("Success! Welcome Back!")

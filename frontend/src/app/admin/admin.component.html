@@ -1,60 +1,7 @@
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">Task Pro</span>
-    </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/createemployee">
-            <i class='bx bx-box' ></i>
-            <span class="links_name">Create Employee</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Track Employee Task Status</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Overdue Tasks</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <i class='bx bx-user' ></i>
-            <span class="links_name">Employee Task Details</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="#">
-            <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-  </div>
-  <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-        <span class="dashboard">Dashboard</span>
-      </div>
-      <div class="profile-details">
-        <!--<img src="images/profile.jpg" alt="">-->
-        <span class="admin_name">{{user!.firstName}} {{user!.lastName}}</span>
-      </div>
-    </nav>
-
-    <div class="home-content">
+<app-sidenav></app-sidenav>
+<section class="home-section">
+  <app-header></app-header>
+  <div class="home-content">
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
@@ -65,13 +12,13 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Tasks</div>
-            <div class="number">38,876</div>
+            <div class="number">{{tasks}}</div>
           </div>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Overdue Tasks</div>
-            <div class="number">$12,876</div>
+            <div class="number">{{overdueTasks}}</div>
           </div>
         </div>
       </div>

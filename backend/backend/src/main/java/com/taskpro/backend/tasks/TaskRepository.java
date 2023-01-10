@@ -18,11 +18,8 @@ public interface TaskRepository extends JpaRepository <Task, Long>{
 
     List<Task> findTasksByCreatedBy(User id);
 
-    @Query(
-            value = "SELECT * FROM task ORDER BY due_date desc",
-            nativeQuery = true
-    )
-    List<Task> getAllByDueDateDescending();
+    @Query(value = "SELECT COUNT(*) from Task t WHERE t.dueDate < NOW()")
+    Long findOverdueTasks();
 
     @Query(
             value = "SELECT new com.taskpro.backend.tasks.CountType(COUNT(*), t.status) FROM Task t where t.createdBy = :id GROUP BY t.status"

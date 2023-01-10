@@ -25,12 +25,15 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { TrackEmployeetaskStatusComponent } from './track-employeetask-status/track-employeetask-status.component';
-import { OverdueTasksComponent } from './overdue-tasks/overdue-tasks.component';
-import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
+import { OverdueTasksComponent } from './lists/overdue-tasks/overdue-tasks.component';
 import { UpdateComponent } from './task/update/update.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { RegistrationComponent } from './registration/registration.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ListusersComponent } from './lists/listusers/listusers.component';
+import { ListtasksComponent } from './lists/listtasks/listtasks.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -43,11 +46,12 @@ import { RegistrationComponent } from './registration/registration.component';
     ChartComponent,
     AddComponent,
     CreateEmployeeComponent,
-    TrackEmployeetaskStatusComponent,
     OverdueTasksComponent,
-    EmployeeTaskdetailsComponent,
     UpdateComponent,
     RegistrationComponent,
+    SidenavComponent,
+    ListusersComponent,
+    ListtasksComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -72,7 +76,9 @@ import { RegistrationComponent } from './registration/registration.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [
     CookieService

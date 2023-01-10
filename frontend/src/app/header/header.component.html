@@ -1,6 +1,8 @@
-<div class="header">
-  <div class="company">TaskPro Management System</div>
-  <div class="user">
-    <div class="user-name">Keith</div>
+<nav>
+  <div class="sidebar-button">
+    <span class="dashboard">TaskPro {{user.role.toLocaleUpperCase()}}</span>
   </div>
-</div>
+  <div class="profile-details">
+    <span class="admin_name">{{user!.firstName}} {{user!.lastName}}</span>
+  </div>
+</nav>

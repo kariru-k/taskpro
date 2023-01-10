@@ -10,6 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {UpdateComponent} from "../update/update.component";
 import {Status} from "../../interface/Status";
 import {ToastrService} from "ngx-toastr";
+import {AddComponent} from "../add/add.component";
 
 @Component({
   selector: 'app-list',
@@ -49,7 +50,9 @@ export class ListComponent implements OnInit{
   }
 
   onClick() {
-    this.router.navigateByUrl('/add')
+    const dialogRef = this.dialog.open(AddComponent, {
+      width: '1000px',
+    });
   }
 
   onUpdateDialog(task: Task) {

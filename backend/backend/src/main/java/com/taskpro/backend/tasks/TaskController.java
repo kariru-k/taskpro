@@ -77,10 +77,16 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.OK).body(task);
     }
 
-    //Return all tasks
+    //Return number of tasks
     @GetMapping("/tasks/number")
     public ResponseEntity<Long> getAll() {
         Long number = taskService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(number);
+    }
+
+    @GetMapping("/tasks/number/overdue")
+    public ResponseEntity<Long> getOverdueTasks() {
+        Long number = taskService.findOverdueTasks();
         return ResponseEntity.status(HttpStatus.OK).body(number);
     }
     

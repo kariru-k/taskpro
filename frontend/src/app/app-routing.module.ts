@@ -5,11 +5,10 @@ import {UserComponent} from "./user/user.component";
 import {LoginComponent} from "./login/login.component";
 import {AddComponent} from "./task/add/add.component";
 import { CreateEmployeeComponent} from './create-employee/create-employee.component';
-import { TrackEmployeetaskStatusComponent} from './track-employeetask-status/track-employeetask-status.component';
-import { OverdueTasksComponent} from './overdue-tasks/overdue-tasks.component';
-import { EmployeeTaskdetailsComponent } from './employee-taskdetails/employee-taskdetails.component';
-import { EMPTY } from 'rxjs';
+import { OverdueTasksComponent} from './lists/overdue-tasks/overdue-tasks.component';
 import { RegistrationComponent } from './registration/registration.component';
+import {ListusersComponent} from "./lists/listusers/listusers.component";
+import {ListtasksComponent} from "./lists/listtasks/listtasks.component";
 
 const routes: Routes = [
   {
@@ -33,20 +32,20 @@ const routes: Routes = [
     component: CreateEmployeeComponent
   },
   {
-    path: 'trackemployeestatus',
-    component: TrackEmployeetaskStatusComponent
-  },
-  {
     path: 'overduetasks',
     component: OverdueTasksComponent
   },
   {
-    path: 'employeetaskdetails',
-    component: EmployeeTaskdetailsComponent
-  },
-  {
     path: 'signup',
     component: RegistrationComponent
+  },
+  {
+    path: 'list/listUsers',
+    component: ListusersComponent
+  },
+  {
+    path: 'list/listTasks',
+    component: ListtasksComponent
   }
 ]
 @NgModule({

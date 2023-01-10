@@ -1,7 +1,13 @@
+.header{
+  background-color: #0A2558;
+  height: 65px;
+}
+
+
 .main-container{
   display: flex;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: stretch;
   width: 100%;
   padding: 10px;
 }

@@ -51,4 +51,8 @@ public class TaskService {
         return taskRepository.findNumberOfTasksByUser(id);
     }
 
+    public Long findOverdueTasks(){
+        return taskRepository.findOverdueTasks();
+    }
+
 }
