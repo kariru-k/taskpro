@@ -1,44 +1,36 @@
-<div class="form row col-sm-6 auth" style="max-width:350px;">
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <div><p class="h4">REGISTER</p></div>
-      <div class="form-group">
-        <label for="name">First name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="user.firstName" #name="ngModel" required
-        [ngClass]="{ 'is-invalid': f.submitted}"/>
-        <div *ngIf="f.submitted && name.invalid">
-          <!-- <div class="error-field" *ngIf="f.controls['name'].errors.required">Name is required</div> -->
-        </div>
+<div class="login">
+  <div class="box">
+    <div class="form">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+      <h1>TASKPRO SYSTEM</h1>
+      <h2>Signup</h2>
+      <div class="input-box">
+        <input type="firstName" name="firstName" required autocomplete=off ngModel>
+        <span>FirstName</span>
+        <i></i>
       </div>
-      <div class="form-group">
-        <label for="name">Last name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="user.lastName" #name="ngModel" required
-        [ngClass]="{ 'is-invalid': f.submitted}"/>
-        <div *ngIf="f.submitted && name.invalid">
-          <!-- <div class="error-field" *ngIf="f.controls['name'].errors.required">Name is required</div> -->
-        </div>
+      <div class="input-box">
+        <input type="lastName" name="lastName" required autocomplete=off ngModel>
+        <span>LastName</span>
+        <i></i>
       </div>
-      <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required email
-          [ngClass]="{ 'is-invalid': f.submitted}"/>
-          <div *ngIf="f.submitted && email.invalid">
-            <!-- <div class="error-field" *ngIf="f.controls['email'].errors">Email is required</div> -->
-            <!-- <div class="error-field" *ngIf="f.controls['email'].errors.email">Email must be a valid email address</div> -->
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input pPassword type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
-            required minlength="6" [ngClass]="{ 'is-invalid': f.submitted}"/>
-          <div *ngIf="f.submitted && password.invalid">
-            <div class="error-field" *ngIf="f.controls['password'].errors">Password is required</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary" [routerLink]="['/signup']">Register</button>
-          <div class="error-field" *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-            Signup failed!<br/>{{errorMessage}}
-          </div>
-        </div>
+      <div class="input-box">
+        <input type="email" name="email" required autocomplete=off ngModel>
+        <span>Email</span>
+        <i></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" required ngModel>
+        <span>Password</span>
+        <i></i>
+      </div>
+      <div class="input-box">
+        <input type="confirmPassword" name="confirmPassword" required ngModel>
+        <span>Confirm Passowrd</span>
+        <i></i>
+      </div>
+      <button type="submit">Register</button> <br>
       </form>
     </div>
+  </div>
+</div>

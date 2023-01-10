@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../service/users/user.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from '../interface/user';
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -14,7 +16,7 @@ export class RegistrationComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
  
-  constructor(private authService: UserService,private formBuilder: FormBuilder) { }
+  constructor(private authService: UserService,private formBuilder: FormBuilder,private router: Router,private toastr: ToastrService) { }
  
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -36,13 +38,15 @@ export class RegistrationComponent implements OnInit {
     this.authService.signUpUser(user).subscribe(
       data => {
         // console.log(data);
+        
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigateByUrl('/user')
+        this.toastr.success("Success! You have succesfully signed up!")
       },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
+      (error: any) => {
+        this.toastr.error("Oops! You may Have the Wrong credentials!")
+      },
     );
   }
  
