@@ -21,6 +21,9 @@ public interface TaskRepository extends JpaRepository <Task, Long>{
     @Query(value = "SELECT COUNT(*) from Task t WHERE t.dueDate < NOW()")
     Long findOverdueTasks();
 
+    @Query(value = "SELECT task from Task task WHERE task.dueDate < NOW()")
+    List<Task> listOverdueTasks();
+
     @Query(
             value = "SELECT new com.taskpro.backend.tasks.CountType(COUNT(*), t.status) FROM Task t where t.createdBy = :id GROUP BY t.status"
     )

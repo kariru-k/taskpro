@@ -41,8 +41,7 @@ export class AddComponent implements OnInit{
 
     this.taskService.addTask(task).subscribe(response => {
       if (response.status == 200){
-        this.router.navigateByUrl('/user')
-        this.toastr.success("Success! You have added a new task")
+        this.router.navigateByUrl('/user').then(r => this.toastr.success("Success! You have added a new task"))
       }
     },
       error => {

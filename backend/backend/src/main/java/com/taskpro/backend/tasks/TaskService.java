@@ -55,4 +55,8 @@ public class TaskService {
         return taskRepository.findOverdueTasks();
     }
 
+    public List<Task> listOverdueTasks(){
+        return taskRepository.listOverdueTasks();
+    }
+
 }

@@ -51,6 +51,16 @@ public class TaskController {
         }
     }
 
+    @GetMapping("/tasks/overdue")
+    public ResponseEntity<List<Task>> getOverDueTasksByUser() {
+        List<Task> tasks = taskService.listOverdueTasks();
+        if (!tasks.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK).body(tasks);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
     //Get percentage of tasks by status
     @GetMapping("/tasks/users/percentages/{id}")
     public ResponseEntity<List<CountType>> getPercentageUserTasksByType(@PathVariable User id){

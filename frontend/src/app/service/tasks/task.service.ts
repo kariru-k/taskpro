@@ -19,6 +19,10 @@ export class TaskService {
     return this.httpClient.get<Array<Task>>(`${this.apiUrl}/tasks`)
   }
 
+  getOverdueTasks(): Observable<Array<Task>> {
+    return this.httpClient.get<Array<Task>>(`${this.apiUrl}/tasks/overdue`)
+  }
+
   getNumberOfTasks(): Observable<number>{
     return this.httpClient.get<number>(`${this.apiUrl}/tasks/number`);
   }
@@ -65,6 +69,8 @@ export class TaskService {
   deleteTask(id: number): Observable<any> {
     return this.httpClient.delete(`http://localhost:8080/api/v1/tasks/${id}`)
   }
+
+
 
 
 }

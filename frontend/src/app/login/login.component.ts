@@ -24,11 +24,9 @@ export class LoginComponent {
         this.localStorageService.setItem('user', response.body);
 
         if (response.body?.role == 'ADMIN'){
-          this.router.navigateByUrl('/admin')
-          this.toastr.success("Success! Welcome Back!")
+          this.router.navigateByUrl('/admin').then(r => this.toastr.success("Success! Welcome Back!"))
         } else {
-          this.router.navigateByUrl('/user')
-          this.toastr.success("Success! Welcome Back!")
+          this.router.navigateByUrl('/user').then(r => this.toastr.success("Success! Welcome Back!"))
         }
       },
 
