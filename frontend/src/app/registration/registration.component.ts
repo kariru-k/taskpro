@@ -19,12 +19,18 @@ export class RegistrationComponent implements OnInit {
   constructor(private authService: UserService,private formBuilder: FormBuilder,private router: Router,private toastr: ToastrService) { }
  
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group(
+      {
       firstName: ['',Validators.required],
       lastName : ['',Validators.required],
       email: ['',Validators.required],
       password: ['',Validators.required],
-    });
+      confirmPassword: ['', [Validators.required]]
+      },
+      {
+        validator: this.ConfirmedValidator('Password', 'confirmPassword'),
+      }
+    );
   }
  
   onSubmit(){
@@ -45,9 +51,23 @@ export class RegistrationComponent implements OnInit {
         this.toastr.success("Success! You have succesfully signed up!")
       },
       (error: any) => {
-        this.toastr.error("Oops! You may Have the Wrong credentials!")
+        this.toastr.error("Oops! You may Have entered the Wrong credentials!")
       },
     );
   }
  
+  ConfirmedValidator(controlName: string, matchingControlName: string){
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+        if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
+            return;
+        }
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ confirmedValidator: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+}
 }
