@@ -72,6 +72,9 @@ export class ListComponent implements OnInit{
       response => {
         console.log(response);
         this.toastr.success("Task Deleted Successfully");
+      },
+      error => {
+        this.toastr.error(error);
       }
     )
   }

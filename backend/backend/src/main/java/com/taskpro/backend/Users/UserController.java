@@ -59,8 +59,12 @@ public class UserController {
     //create User
     @PostMapping("/users/createUser")
     public ResponseEntity<User>add(@RequestBody User user) {
-        userService.save(user);
-        return ResponseEntity.ok().body(user);
+        if(userService.get(user.getEmail()) == null) {
+            userService.save(user);
+            return ResponseEntity.ok().body(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     //Log In User

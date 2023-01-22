@@ -6,6 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Task} from "../../interface/task";
 import {User} from "../../interface/user";
 import {LocalstorageService} from "../../service/localStorage/localstorage.service";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update',
@@ -21,6 +22,7 @@ export class UpdateComponent implements OnInit{
   constructor(
     private tasKService: TaskService,
     private fb: FormBuilder,
+    private toastr: ToastrService,
     private localStorageService: LocalstorageService,
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Task
@@ -66,10 +68,10 @@ export class UpdateComponent implements OnInit{
 
     this.tasKService.updateTask(task, <number>this.data.id).subscribe(
       (response) =>{
+        this.toastr.success("Task Updated Successfully")
         this.dialogRef.close();
       },
-      (error) => console.error(error)
+      (error) => this.toastr.error(error)
     )
   }
-
 }

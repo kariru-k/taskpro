@@ -27,11 +27,29 @@
 }
 .two{
   width: 20%;
-  background-color: aqua;
 }
 .three {
   width: 40%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   background-color: #fcdb95;
 }
+
+.one .title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+
+}
+.two .title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+
+}
+.three .title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
 

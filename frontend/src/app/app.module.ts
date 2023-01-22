@@ -34,6 +34,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { ListusersComponent } from './lists/listusers/listusers.component';
 import { ListtasksComponent } from './lists/listtasks/listtasks.component';
 import {MatTableModule} from "@angular/material/table";
+import { DataComponent } from './data/data.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -52,6 +53,7 @@ import {MatTableModule} from "@angular/material/table";
     SidenavComponent,
     ListusersComponent,
     ListtasksComponent,
+    DataComponent,
   ],
   imports: [
     AppRoutingModule,

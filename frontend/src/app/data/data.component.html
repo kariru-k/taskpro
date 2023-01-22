@@ -1,0 +1,6 @@
+<div class="data">
+  <div class="circle" *ngFor="let response of response | async">
+    <p class="percentage">{{response.count}}%</p>
+    <p class="status">{{response.status}}</p>
+  </div>
+</div>

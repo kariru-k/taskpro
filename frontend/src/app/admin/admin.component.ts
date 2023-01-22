@@ -52,7 +52,6 @@ export class AdminComponent implements OnInit{
     this.taskService.getNumberOfOverdueTasks().subscribe(
       (response) =>{
         this.overdueTasks = response;
-        console.log(response);
       }
     );
     return this.tasks;
