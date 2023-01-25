@@ -31,7 +31,10 @@ const routes: Routes = [
     path: 'createemployee',
     component: CreateEmployeeComponent
   },
-  
+  {
+    path: 'overduetasks',
+    component: OverdueTasksComponent
+  },
   {
     path: 'signup',
     component: RegistrationComponent
