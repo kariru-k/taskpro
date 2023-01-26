@@ -8,7 +8,7 @@ import { CreateEmployeeComponent} from './create-employee/create-employee.compon
 import { OverdueTasksComponent} from './lists/overdue-tasks/overdue-tasks.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {ListusersComponent} from "./lists/listusers/listusers.component";
-
+import {ListtasksComponent} from "./lists/listtasks/listtasks.component";
 
 const routes: Routes = [
   {
