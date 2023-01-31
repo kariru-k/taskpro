@@ -43,7 +43,7 @@ public class UserServiceTest{
     }
     @Test
     public void getUserByEmail(){
-        User user = new User("Santa","Clause","claus@gmail.com","axgznajkaaka",Role.USER);
+        User user = new User("Santa","James","claus@gmail.com","axgznajkaaka",Role.USER);
         when(repository.findByEmail(user.getEmail())).thenReturn(user);
         assertEquals(user,service.get(user.getEmail()));
     }
