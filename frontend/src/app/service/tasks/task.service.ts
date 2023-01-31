@@ -31,21 +31,22 @@ export class TaskService {
     return this.httpClient.get<number>(`${this.apiUrl}/tasks/number/overdue`);
   }
 
+  //Get task by its ID
   getTaskById(id: number): Observable<Task> {
-    return this.httpClient
-      .get<Task>(`http://localhost:8080/api/v1/tasks/${id}`)
-      .pipe(map((d: Task) => d));
+    return this.httpClient.get<Task>(`http://localhost:8080/api/v1/tasks/${id}`).pipe(map((d: Task) => d));
   }
 
+  //Get a task by a specific user
   getTasksByUser(user: User | null): Observable<Array<Task>>{
-    return this.httpClient
-      .get<Array<Task>>(`${this.apiUrl}/tasks/users/${user?.id}`)
+    return this.httpClient.get<Array<Task>>(`${this.apiUrl}/tasks/users/${user?.id}`)
   }
 
+  //Get the percentage of statuses of all tasks
   getPercentageTasksByUser(user: User | null): Observable<Array<CountResponse>>{
     return this.httpClient.get<Array<CountResponse>>(`${this.apiUrl}/tasks/users/percentages/${user?.id}`)
   }
 
+  //Create a task
   addTask(value: Task): Observable<HttpResponse<Task>>{
     return this.httpClient.post<Task>(`${this.apiUrl}/tasks`, value, {observe: "response"});
   }
@@ -61,13 +62,14 @@ export class TaskService {
     ];
   }
 
+  //Updates existing tasks with new details
   updateTask(task: Task, id: number): Observable<Task> {
-    return this.httpClient.put<Task>(`http://localhost:8080/api/v1/tasks/${id}`, task)
-      .pipe(map((d: Task) => d));
+    return this.httpClient.put<Task>(`${this.apiUrl}/tasks/${id}`, task).pipe(map((d: Task) => d));
   }
 
+  //Delete task
   deleteTask(id: number): Observable<any> {
-    return this.httpClient.delete(`http://localhost:8080/api/v1/tasks/${id}`)
+    return this.httpClient.delete(`${this.apiUrl}/tasks/${id}`)
   }
 
 

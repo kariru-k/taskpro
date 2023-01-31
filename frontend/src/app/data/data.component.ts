@@ -19,10 +19,15 @@ export class DataComponent implements OnInit{
 
 
 
-  constructor(private userService: UserService, private taskService: TaskService, private localStorageService: LocalstorageService) {
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private localStorageService: LocalstorageService
+  ) {
     this.user = this.localStorageService.getItem("user");
   }
 
+  //Get responses of percentages of task status
   getPercentageTasks(){
     this.response = this.taskService.getPercentageTasksByUser(this.user);
     return this.response;
@@ -31,6 +36,5 @@ export class DataComponent implements OnInit{
   ngOnInit(): void {
     this.getPercentageTasks();
   }
-
 
 }

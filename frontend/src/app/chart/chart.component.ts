@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Chart, ChartData, ChartOptions, ChartType} from "chart.js";
+import {Chart} from "chart.js";
 import {UserService} from "../service/users/user.service";
 import {TaskService} from "../service/tasks/task.service";
 import {LocalstorageService} from "../service/localStorage/localstorage.service";
@@ -14,6 +14,7 @@ import {CountResponse} from "../interface/CountResponse";
 })
 export class ChartComponent implements OnInit{
 
+
   user!: User | null;
   labels: string[] = [];
   data: number[] = [];
@@ -27,7 +28,11 @@ export class ChartComponent implements OnInit{
 
 
 
-  constructor(private userService: UserService, private taskService: TaskService, private localStorageService: LocalstorageService) {
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private localStorageService: LocalstorageService
+  ) {
     this.user = this.localStorageService.getItem("user");
   }
 
@@ -48,16 +53,21 @@ export class ChartComponent implements OnInit{
     this.updateChart();
 
   }
+
+  //Get the response of percentages of each status
   getPercentageTasks(){
     this.response = this.taskService.getPercentageTasksByUser(this.user);
     return this.response;
   }
 
+  //Update the chart details with the responses
   updateChartDetails(){
     this.getPercentageTasks().subscribe(
       response => {
         response.forEach((value: CountResponse) => {
+          //add label to the chart
           this.labels.push(value.status);
+          //add data to the chart
           this.data.push(value.count)
           this.chart.update();
         })
@@ -65,6 +75,7 @@ export class ChartComponent implements OnInit{
     )
   }
 
+  //Creation of the chart
   createChart() {
     this.chart = new Chart("myChart", {
       type: 'doughnut',

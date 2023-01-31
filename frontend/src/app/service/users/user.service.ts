@@ -9,12 +9,15 @@ import {Task} from "../../interface/task";
 @Injectable({
   providedIn: 'root'
 })
+
+//Service for HTTP requests involving users
 export class UserService {
   private apiUrl = environment.apiUrl;
   user!: User | null;
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
 
+  //API call to login a user
   loginUser(value: {email: string, password: string}): Observable<HttpResponse<User>>{
     return this.http.post<User>(`${this.apiUrl}/users/login`, value, {observe: "response"});
   }

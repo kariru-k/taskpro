@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Status} from "../../interface/Status";
-import {TaskService} from "../../service/tasks/task.service";
+import {Status} from "../interface/Status";
+import {TaskService} from "../service/tasks/task.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Task} from "../../interface/task";
-import {User} from "../../interface/user";
-import {LocalstorageService} from "../../service/localStorage/localstorage.service";
+import {Task} from "../interface/task";
+import {User} from "../interface/user";
+import {LocalstorageService} from "../service/localStorage/localstorage.service";
 import {ToastrModule, ToastrService} from "ngx-toastr";
 
 @Component({
@@ -32,17 +32,21 @@ export class UpdateComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    //Obtain values from the form
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       dueDate: ['', Validators.required],
       status: ['', Validators.required],
       description: ['', Validators.required],
     })
+
+    //Dropdown options for the status
     this.typeOptions = this.tasKService.getTypeOptions();
 
     this.showTask();
   }
 
+  //Show existing values of the task and set them as form values
   showTask() {
     this.tasKService.getTaskById(<number>this.data.id).subscribe(
       (response:Task) => {
@@ -56,7 +60,10 @@ export class UpdateComponent implements OnInit{
     );
   }
 
+  //Updating the task with the new values
   updateTask() {
+
+    //Define new task variable which will be used to update the existing task
     const task: Task = {
       title: this.taskForm.value['title'],
       status: this.taskForm.value['status'],
@@ -66,6 +73,7 @@ export class UpdateComponent implements OnInit{
       createdBy: this.data.createdBy
     }
 
+    //PUT request to update the task via ID
     this.tasKService.updateTask(task, <number>this.data.id).subscribe(
       (response) =>{
         this.toastr.success("Task Updated Successfully")

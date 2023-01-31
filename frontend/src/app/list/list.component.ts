@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../interface/user";
-import {UserService} from "../../service/users/user.service";
-import {TaskService} from "../../service/tasks/task.service";
-import {Task} from "../../interface/task";
-import {LocalstorageService} from "../../service/localStorage/localstorage.service";
+import {User} from "../interface/user";
+import {UserService} from "../service/users/user.service";
+import {TaskService} from "../service/tasks/task.service";
+import {Task} from "../interface/task";
+import {LocalstorageService} from "../service/localStorage/localstorage.service";
 import {Observable, Subject, switchMap, takeUntil, tap, timer} from "rxjs";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -17,6 +17,7 @@ import {AddComponent} from "../add/add.component";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit{
+
   tasks!: Observable<Task[]>;
   private unsub = new Subject();
   user!: User | null
@@ -35,6 +36,7 @@ export class ListComponent implements OnInit{
   }
 
   ngOnInit() {
+    //Refreshes the page to show new tasks every ten seconds
     timer(0, 10000).pipe(
       tap((x) => console.log(x)),
       takeUntil(this.unsub),
@@ -43,31 +45,31 @@ export class ListComponent implements OnInit{
 
   }
 
+  //Getting the user's tasks
   getTasks() {
     this.tasks = this.taskService.getTasksByUser(this.user);
     return this.tasks
   }
 
+  //Open create task dialog box
   onClick() {
     const dialogRef = this.dialog.open(AddComponent, {
       width: '1000px',
     });
   }
 
+  //Open update task dialog box
   onUpdateDialog(task: Task) {
-    console.log(task);
     const dialogRef = this.dialog.open(UpdateComponent, {
       width: '1000px',
       data: task,
     });
-
-
   }
 
+  //Delete a task
   onDeleteTask(task: Task) {
     this.taskService.deleteTask(<number>task.id).subscribe(
       response => {
-        console.log(response);
         this.toastr.success("Task Deleted Successfully");
       },
       error => {
@@ -75,5 +77,4 @@ export class ListComponent implements OnInit{
       }
     )
   }
-
 }

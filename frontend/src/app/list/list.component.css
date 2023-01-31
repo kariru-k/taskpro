@@ -6,6 +6,7 @@
 mat-card{
   background: cornflowerblue;
   margin: 10px;
+  width: auto;
 }
 
 mat-card-subtitle{

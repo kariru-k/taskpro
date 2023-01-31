@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AdminComponent} from "./admin/admin.component";
 import {UserComponent} from "./user/user.component";
 import {LoginComponent} from "./login/login.component";
-import {AddComponent} from "./task/add/add.component";
+import {AddComponent} from "./add/add.component";
 import { CreateEmployeeComponent} from './create-employee/create-employee.component';
 import { OverdueTasksComponent} from './lists/overdue-tasks/overdue-tasks.component';
 import { RegistrationComponent } from './registration/registration.component';
