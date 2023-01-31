@@ -32,7 +32,7 @@ public class TaskServiceTest {
     }
     @Test
     public void saveTaskTest(){
-        User user = new User("John","Njau","njau@gmail.com","axduis7e8w87najkaaka",Role.USER);
+        User user = new User("John","Njau","johny@gmail.com","axduis7e8w87najkaaka",Role.USER);
         Task task = new Task("Work on ux design",Status.PEERREVIEW,new Date(),"This is to be done by the UX designer", user);
         when(repository.save(task)).thenReturn(task);
         assertEquals(task,service.saveTask(task));
