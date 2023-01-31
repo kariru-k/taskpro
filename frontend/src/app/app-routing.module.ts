@@ -5,10 +5,10 @@ import {UserComponent} from "./user/user.component";
 import {LoginComponent} from "./login/login.component";
 import {AddComponent} from "./add/add.component";
 import { CreateEmployeeComponent} from './create-employee/create-employee.component';
-import { OverdueTasksComponent} from './lists/overdue-tasks/overdue-tasks.component';
+import { OverdueTasksComponent} from './overdue-tasks/overdue-tasks.component';
 import { RegistrationComponent } from './registration/registration.component';
-import {ListusersComponent} from "./lists/listusers/listusers.component";
-import {ListtasksComponent} from "./lists/listtasks/listtasks.component";
+import {ListusersComponent} from "./listusers/listusers.component";
+import {ListtasksComponent} from "./listtasks/listtasks.component";
 
 const routes: Routes = [
   {

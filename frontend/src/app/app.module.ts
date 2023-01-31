@@ -25,14 +25,14 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { OverdueTasksComponent } from './lists/overdue-tasks/overdue-tasks.component';
+import { OverdueTasksComponent } from './overdue-tasks/overdue-tasks.component';
 import { UpdateComponent } from './update/update.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { RegistrationComponent } from './registration/registration.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { ListusersComponent } from './lists/listusers/listusers.component';
-import { ListtasksComponent } from './lists/listtasks/listtasks.component';
+import { ListusersComponent } from './listusers/listusers.component';
+import { ListtasksComponent } from './listtasks/listtasks.component';
 import {MatTableModule} from "@angular/material/table";
 import { DataComponent } from './data/data.component';
 

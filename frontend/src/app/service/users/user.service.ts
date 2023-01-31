@@ -22,6 +22,7 @@ export class UserService {
     return this.http.post<User>(`${this.apiUrl}/users/login`, value, {observe: "response"});
   }
 
+  //API call to get number of users
   getNumberOfUsers(): Observable<number>{
     return this.http.get<number>(`${this.apiUrl}/users/number`)
   }
@@ -30,8 +31,8 @@ export class UserService {
     return this.http.post<User>(`${this.apiUrl}/users/createUser`, user, {observe: "response"});
   }
 
+  //API call to get all users
   getUsers(): Observable<Array<User>> {
     return this.http.get<Array<User>>(`${this.apiUrl}/users`)
   }
-
 }

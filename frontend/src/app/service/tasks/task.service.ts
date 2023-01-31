@@ -15,18 +15,22 @@ export class TaskService {
 
   constructor(private httpClient: HttpClient) {}
 
+  //API call to get list of all tasks
   getTasks(): Observable<Array<Task>> {
     return this.httpClient.get<Array<Task>>(`${this.apiUrl}/tasks`)
   }
 
+  //API Call to get all overdue tasks
   getOverdueTasks(): Observable<Array<Task>> {
     return this.httpClient.get<Array<Task>>(`${this.apiUrl}/tasks/overdue`)
   }
 
+  //API call to get the number of all tasks
   getNumberOfTasks(): Observable<number>{
     return this.httpClient.get<number>(`${this.apiUrl}/tasks/number`);
   }
 
+  //API call to get number of overdue tasks
   getNumberOfOverdueTasks(): Observable<number>{
     return this.httpClient.get<number>(`${this.apiUrl}/tasks/number/overdue`);
   }

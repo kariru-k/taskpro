@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Task} from "../../interface/task";
-import {TaskService} from "../../service/tasks/task.service";
+import {Task} from "../interface/task";
+import {TaskService} from "../service/tasks/task.service";
 
 @Component({
   selector: 'app-listtasks',
@@ -14,6 +14,8 @@ export class ListtasksComponent implements OnInit{
   constructor(private taskService: TaskService) {
 
   }
+
+  //Get all tasks
   getAllTasks() {
     return this.taskService.getTasks().subscribe(
       (response) => {

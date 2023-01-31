@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Task} from "../../interface/task";
-import {TaskService} from "../../service/tasks/task.service";
+import {Task} from "../interface/task";
+import {TaskService} from "../service/tasks/task.service";
 
 @Component({
   selector: 'app-overdue-tasks',
@@ -14,6 +14,8 @@ export class OverdueTasksComponent implements OnInit{
   constructor(private taskService: TaskService) {
 
   }
+
+  //Gets all overdue tasks
   getAllOverdueTasks() {
     return this.taskService.getOverdueTasks().subscribe(
       (response) => {
