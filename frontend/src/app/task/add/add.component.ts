@@ -6,6 +6,7 @@ import {Task} from "../../interface/task";
 import {TaskService} from "../../service/tasks/task.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add',
@@ -16,7 +17,14 @@ export class AddComponent implements OnInit{
   user!: User;
   taskForm!: FormGroup;
 
-  constructor(private localStorageService: LocalstorageService,private router: Router,private formBuilder: FormBuilder, private taskService: TaskService, private toastr: ToastrService) {
+  constructor(private localStorageService: LocalstorageService,
+              private router: Router,
+              private formBuilder: FormBuilder,
+              private taskService: TaskService,
+              private toastr: ToastrService,
+              public dialogRef: MatDialogRef<AddComponent>
+
+) {
     this.user = this.localStorageService.getItem('user');
   }
 
@@ -39,17 +47,18 @@ export class AddComponent implements OnInit{
       createdBy: this.user
     }
 
-    this.taskService.addTask(task).subscribe(response => {
-      if (response.status == 200){
-        this.router.navigateByUrl('/user').then(r => this.toastr.success("Success! You have added a new task"))
+    this.taskService.addTask(task).subscribe(
+      response => {
+      if (response.status == 201){
+        this.toastr.success("Success! You have added a new task")
+        this.dialogRef.close();
       }
     },
       error => {
       this.toastr.error("Oops. We couldn't process your task. Please try again")
       }
-
-
       );
+
     console.log(task);
   }
 }

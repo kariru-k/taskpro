@@ -51,6 +51,7 @@ public class TaskController {
         }
     }
 
+    //Get all overdue tasks
     @GetMapping("/tasks/overdue")
     public ResponseEntity<List<Task>> getOverDueTasksByUser() {
         List<Task> tasks = taskService.listOverdueTasks();
@@ -84,7 +85,7 @@ public class TaskController {
     @PostMapping("/tasks")
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
         taskService.saveTask(task);
-        return ResponseEntity.status(HttpStatus.OK).body(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(task);
     }
 
     //Return number of tasks

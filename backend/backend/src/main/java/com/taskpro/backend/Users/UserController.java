@@ -58,12 +58,12 @@ public class UserController {
 
     //create User
     @PostMapping("/users/createUser")
-    public ResponseEntity<User>add(@RequestBody User user) {
+    public ResponseEntity<?>add(@RequestBody User user) {
         if(userService.get(user.getEmail()) == null) {
             userService.save(user);
-            return ResponseEntity.ok().body(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(user);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This user already exists");
         }
     }
 
@@ -79,6 +79,7 @@ public class UserController {
             Cookie cookie = new Cookie("jwt", jwt);
             cookie.setHttpOnly(true);
             cookie.setMaxAge(3600);
+            cookie.setSecure(false);
             headers.add("Authorization", "Bearer " + jwt);
             headers.add("Set-Cookie", cookie.toString());
             headers.set("Access-Control-Expose-Headers", "Authorization");

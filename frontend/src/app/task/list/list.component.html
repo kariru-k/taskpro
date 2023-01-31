@@ -1,14 +1,17 @@
 <div class="container">
   <mat-card class="example-card" *ngFor="let task of tasks | async">
     <mat-card-header>
-      <mat-card-title>{{task.title}}</mat-card-title>
+      <mat-card-title>
+        {{task.title.substring(0, 25)}}
+        {{task.title.length > 40 ? "..." : "..."}}
+      </mat-card-title>
       <mat-card-subtitle>{{task.status}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p class="task-due-date">{{task.dueDate | date: "mediumDate"}}</p>
       <p class="task-description">
         {{task.description.substring(0, 15)}}
-        {{ task.description.length > 40 ? "..." : "" }}
+        {{ task.description.length > 40 ? "..." : "..." }}
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -17,7 +20,7 @@
     </mat-card-actions>
   </mat-card>
   <div class="button">
-    <button mat-mini-fab matTooltip="Primary" color="primary" aria-label="Example mini fab with a heart icon" (click)="onClick()">
+    <button mat-mini-fab  color="primary" aria-label="Example mini fab with a heart icon" (click)="onClick()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

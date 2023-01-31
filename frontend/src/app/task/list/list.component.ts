@@ -8,7 +8,6 @@ import {Observable, Subject, switchMap, takeUntil, tap, timer} from "rxjs";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {UpdateComponent} from "../update/update.component";
-import {Status} from "../../interface/Status";
 import {ToastrService} from "ngx-toastr";
 import {AddComponent} from "../add/add.component";
 
@@ -62,9 +61,7 @@ export class ListComponent implements OnInit{
       data: task,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed')
-    })
+
   }
 
   onDeleteTask(task: Task) {
