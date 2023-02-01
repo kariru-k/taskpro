@@ -64,6 +64,18 @@ public class TaskServiceTest {
         service.delete(task.getId());
         verify(repository,times(1)).deleteById(task.getId());
     }
-
+    @Test
+    public void listOverdueTasksTest(){
+        User user = new User("Santa","Clause","claus@gmail.com","axgznajkaaka",Role.USER);
+        when(repository.listOverdueTasks()).thenReturn((List<Task>) Stream.of(new Task("Work on project",Status.PEERREVIEW,new Date(),"The project is on software development", user),new Task("Work on ui design",Status.PEERREVIEW,new Date(),"The task is to be assigned to a UI designer", user)).collect(Collectors.toList()));
+        assertEquals(2,service.listOverdueTasks().size());
+    }
+    @Test
+    public void findOverdueTaskTest(){
+        User user = new User("James","Gitau","gitau@gmail.com","dpsdtysdajkaaka",Role.USER);
+        Task task = new Task("Work on ux design",Status.PEERREVIEW,new Date(),"This is to be done by the UX designer", user);
+        when(repository.findOverdueTasks()).thenReturn(task);
+        assertEquals(task,service.findOverdueTasks());
+    }
 
 }
