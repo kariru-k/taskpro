@@ -7,15 +7,16 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 public class PdfGenerator {
-    public void generate(List<CountType> countType ,HttpServletResponse httpServletResponse) throws IOException {
+    public void generate(List<CountType> countType) throws IOException {
 
         Document document = new Document(PageSize.A4);
 
-        PdfWriter.getInstance(document, httpServletResponse.getOutputStream());
+        PdfWriter.getInstance(document, new FileOutputStream("yourfilename.pdf"));
 
         document.open();
 

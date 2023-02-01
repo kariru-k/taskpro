@@ -15,9 +15,9 @@ export class RegistrationComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
- 
+
   constructor(private authService: UserService,private formBuilder: FormBuilder,private router: Router,private toastr: ToastrService) { }
- 
+
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
       }
     );
   }
- 
+
   onSubmit(){
     const user: User = {
       firstName: this.registerForm.value['firstName'],
@@ -44,10 +44,10 @@ export class RegistrationComponent implements OnInit {
     this.authService.signUpUser(user).subscribe(
       data => {
         // console.log(data);
-        
+
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.router.navigateByUrl('/user')
+        this.router.navigateByUrl('')
         this.toastr.success("Success! You have succesfully signed up!")
       },
       (error: any) => {
@@ -55,7 +55,7 @@ export class RegistrationComponent implements OnInit {
       },
     );
   }
- 
+
   ConfirmedValidator(controlName: string, matchingControlName: string){
     return (formGroup: FormGroup) => {
         const control = formGroup.controls[controlName];

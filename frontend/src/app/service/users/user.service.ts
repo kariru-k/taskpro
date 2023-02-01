@@ -4,7 +4,7 @@ import {Observable, tap} from "rxjs";
 import {User} from "../../interface/user";
 import {environment} from "../../../environments/environment";
 import {CookieService} from "ngx-cookie-service";
-import {Task} from "../../interface/task";
+import {Loginlogs} from "../../interface/loginlogs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,10 @@ export class UserService {
   //API call to get all users
   getUsers(): Observable<Array<User>> {
     return this.http.get<Array<User>>(`${this.apiUrl}/users`)
+  }
+
+  //API call to get all users
+  getLoginLogs(): Observable<Array<Loginlogs>> {
+    return this.http.get<Array<Loginlogs>>(`${this.apiUrl}/login/logs`)
   }
 }

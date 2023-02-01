@@ -135,16 +135,13 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/report")
-    public void generatePdfFile(HttpServletResponse response) throws IOException {
-        response.setContentType("application/pdf");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
-        String currentDateTime = dateFormat.format(new Date());
-        String headerkey = "Content-Disposition";
-        String headervalue = "attachment; filename=tasks" + currentDateTime + ".pdf";
-        response.setHeader(headerkey, headervalue);
+    public String generatePdfFile() throws IOException {
         List <CountType> listofStatus = taskService.listTasksGroupedByStatus();
         PdfGenerator generator = new PdfGenerator();
-        generator.generate(listofStatus, response);
+        generator.generate(listofStatus);
+
+        taskService.sendEmail("Report", "Here we have the report");
+        return "Report successfully sent, email to be sent soon";
     }
 }
 

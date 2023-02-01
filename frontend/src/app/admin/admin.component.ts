@@ -16,6 +16,9 @@ export class AdminComponent implements OnInit{
   tasks!: number
   overdueTasks!: number
 
+  url = "localhost:8080/api/v1/tasks/report"
+
+
 
   constructor(private localStorageService: LocalstorageService, private userService: UserService, private taskService: TaskService) {
     this.user = this.localStorageService.getItem('user');
@@ -57,5 +60,10 @@ export class AdminComponent implements OnInit{
       }
     );
     return this.tasks;
+  }
+
+  //Get login Activity
+  onClick(){
+    this.taskService.downloadPdf();
   }
 }

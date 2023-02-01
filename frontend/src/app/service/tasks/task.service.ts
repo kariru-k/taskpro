@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {User} from "../../interface/user";
 import {concatMap, map, Observable, startWith, Subject} from "rxjs";
@@ -76,7 +76,18 @@ export class TaskService {
     return this.httpClient.delete(`${this.apiUrl}/tasks/${id}`)
   }
 
+  //API call to download pdf
+  downloadPdf(): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/pdf');
 
+    return this.httpClient.get(`${this.apiUrl}/tasks/report`, {
+      headers: headers,
+      responseType: 'blob',
+      observe: 'events',
+      reportProgress: true
+    })
+  }
 
 
 }

@@ -2,6 +2,8 @@ package com.taskpro.backend.tasks;
 
 import com.taskpro.backend.Users.User;
 import jakarta.transaction.Transactional;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +12,11 @@ import java.util.List;
 @Transactional
 public class TaskService {
     private final TaskRepository taskRepository;
+    private final JavaMailSender mailSender;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, JavaMailSender mailSender) {
         this.taskRepository = taskRepository;
+        this.mailSender = mailSender;
     }
 
     public List<Task> getTasks(){
@@ -61,5 +65,18 @@ public class TaskService {
 
     public List<CountType> listTasksGroupedByStatus() {
         return taskRepository.groupTasksByStatus();
+    }
+
+    public void sendEmail(String subject, String body){
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("Admin");
+        message.setTo("karirukeith@gmail.com");
+        message.setText(body);
+        message.setSubject(subject);
+
+        mailSender.send(message);
+
+
     }
 }

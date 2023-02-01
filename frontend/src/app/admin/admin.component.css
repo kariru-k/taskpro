@@ -94,8 +94,8 @@
 }
 .home-content .login-boxes{
   display: flex;
-  justify-content: space-between;
-  /* padding: 0 20px; */
+  justify-content: space-evenly;
+  padding: 0 20px;
 }
 
 /* left box */
@@ -103,7 +103,7 @@
   width: 65%;
   background: #fff;
   padding: 20px 30px;
-  margin: 0 20px;
+  margin: 20px 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -115,7 +115,7 @@
 .login-boxes .box .title{
   font-size: 24px;
   font-weight: 500;
-  /* margin-bottom: 10px; */
+   margin-bottom: 10px;
 }
 .login-boxes .login-details li.topic{
   font-size: 20px;
@@ -272,5 +272,13 @@
   .sidebar.active ~ .home-section nav{
     left: 60px;
     width: calc(100% - 60px);
+  }
+
+  table{
+    margin-bottom: 10px;
+  }
+
+  .button{
+    background-color: #0A2558;
   }
 }

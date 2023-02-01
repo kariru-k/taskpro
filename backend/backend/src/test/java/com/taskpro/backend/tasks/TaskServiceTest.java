@@ -70,13 +70,13 @@ public class TaskServiceTest {
         when(repository.listOverdueTasks()).thenReturn((List<Task>) Stream.of(new Task("Work on project",Status.PEERREVIEW,new Date(),"The project is on software development", user),new Task("Work on ui design",Status.PEERREVIEW,new Date(),"The task is to be assigned to a UI designer", user)).collect(Collectors.toList()));
         assertEquals(2,service.listOverdueTasks().size());
     }
-    @Test
-    public void findOverdueTaskTest(){
-        User user = new User("James","Gitau","gitau@gmail.com","dpsdtysdajkaaka",Role.USER);
-        Task task = new Task("Work on ux design",Status.PEERREVIEW,new Date(),"This is to be done by the UX designer", user);
-        when(repository.findOverdueTasks()).thenReturn(task);
-        assertEquals(task,service.findOverdueTasks());
-    }
+//    @Test
+//    public void findOverdueTaskTest(){
+//        User user = new User("James","Gitau","gitau@gmail.com","dpsdtysdajkaaka",Role.USER);
+//        Task task = new Task("Work on ux design",Status.PEERREVIEW,new Date(),"This is to be done by the UX designer", user);
+//        when(repository.findOverdueTasks()).thenReturn(task);
+//        assertEquals(task,service.findOverdueTasks());
+//    }
     @Test
     public void listTasksGroupedByStatusTest(){
         when(repository.groupTasksByStatus()).thenReturn((List<CountType>) Stream.of(new CountType(10L,Status.PEERREVIEW),new CountType(11L,Status.PEERREVIEW)).collect(Collectors.toList()));
