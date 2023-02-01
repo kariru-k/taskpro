@@ -31,7 +31,7 @@ public class UserServiceTest{
     }
     @Test
     public void saveUserTest(){
-        User user = new User("Santa","Clause","claus@gmail.com","axgznajkaaka",Role.USER);
+        User user = new User("Santa","Monty","claus@gmail.com","axgznajkaaka",Role.USER);
         when(repository.save(user)).thenReturn(user);
         assertEquals(user,service.save(user));
     }
@@ -43,7 +43,7 @@ public class UserServiceTest{
     }
     @Test
     public void getUserByEmail(){
-        User user = new User("Santa","Clause","claus@gmail.com","axgznajkaaka",Role.USER);
+        User user = new User("Santa","James","claus@gmail.com","axgznajkaaka",Role.USER);
         when(repository.findByEmail(user.getEmail())).thenReturn(user);
         assertEquals(user,service.get(user.getEmail()));
     }
