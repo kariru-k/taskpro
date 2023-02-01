@@ -77,5 +77,9 @@ public class TaskServiceTest {
         when(repository.findOverdueTasks()).thenReturn(task);
         assertEquals(task,service.findOverdueTasks());
     }
-
+    @Test
+    public void listTasksGroupedByStatusTest(){
+        when(repository.groupTasksByStatus()).thenReturn((List<CountType>) Stream.of(new CountType(10L,Status.PEERREVIEW),new CountType(11L,Status.PEERREVIEW)).collect(Collectors.toList()));
+        assertEquals(2,service.listTasksGroupedByStatus().size());
+    }
 }
