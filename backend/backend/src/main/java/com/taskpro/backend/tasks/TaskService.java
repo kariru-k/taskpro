@@ -59,4 +59,7 @@ public class TaskService {
         return taskRepository.listOverdueTasks();
     }
 
+    public List<CountType> listTasksGroupedByStatus() {
+        return taskRepository.groupTasksByStatus();
+    }
 }

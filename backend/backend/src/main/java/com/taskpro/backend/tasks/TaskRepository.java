@@ -28,4 +28,9 @@ public interface TaskRepository extends JpaRepository <Task, Long>{
             value = "SELECT new com.taskpro.backend.tasks.CountType(COUNT(*), t.status) FROM Task t where t.createdBy = :id GROUP BY t.status"
     )
     List<CountType>getPercentageUserTasksByType(@Param("id") User id);
+
+    @Query(
+            value = "SELECT new com.taskpro.backend.tasks.CountType(COUNT(*), t.status) FROM Task t GROUP BY t.status"
+    )
+    List<CountType>groupTasksByStatus();
 }

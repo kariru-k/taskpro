@@ -1,10 +1,15 @@
 package com.taskpro.backend.tasks;
 
 import com.taskpro.backend.Users.User;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -127,6 +132,19 @@ public class TaskController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/tasks/report")
+    public void generatePdfFile(HttpServletResponse response) throws IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
+        String currentDateTime = dateFormat.format(new Date());
+        String headerkey = "Content-Disposition";
+        String headervalue = "attachment; filename=tasks" + currentDateTime + ".pdf";
+        response.setHeader(headerkey, headervalue);
+        List <CountType> listofStatus = taskService.listTasksGroupedByStatus();
+        PdfGenerator generator = new PdfGenerator();
+        generator.generate(listofStatus, response);
     }
 }
 
